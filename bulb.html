@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb On/Off</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .bulb {
+            width: 150px;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            margin: 10px auto;
+            /* position: relative; */
+            background-image: url('Bulb_Off.webp'); /* Default image when off */
+        }
+
+        .bulb.on {
+            background-image: url('Bulb_On.webp'); /* Image when on */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bulb" id="bulb"></div>
+        <button id="toggleButton">Turn On</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bulb = document.getElementById('bulb');
+            const button = document.getElementById('toggleButton');
+            
+            let isOn = false;
+            
+            button.addEventListener('click', () => {
+                isOn = !isOn;
+                if (isOn) {
+                    bulb.classList.add('on');
+                    button.textContent = 'Turn Off';
+                } else {
+                    bulb.classList.remove('on');
+                    button.textContent = 'Turn On';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
